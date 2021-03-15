@@ -1,57 +1,38 @@
-# One - URL shortener 🍭
+# {Uncontested} - URL shortener {🧪}
 
-This is a sample solution project for "Software testing" course labs.
+This is a template project for "Software testing" course labs. Use it to create your own repo and 
+fulfill/rewrite this document (at least, replace everything in `{...}`).
 
+## Students group
+
+- {Гончар Юрій} {swiftmus12016@gmail.com}
+- {Приходько Максим} {maks0678575@gmail.com}
+- {Науменко Павло} {naumpsha@gmail.com}
+
+## Design document
+
+The [design document](https://docs.google.com/document/d/1RIKe_pa5vVRFI9cVGy8q44R1ZutRFh9OoEB_LderG1E/edit#heading=h.9ibkqdf5myc9) that
+describes architecture and implementation details of this project.
 ## Specification
+The [URL shortener specification](https://docs.google.com/document/d/1RIQWpiXRuxUmI_VhMZjo-UgxMxjEIXIpC2tmMY_ZpuE/edit#heading=h.o78pw7dodfuc).
+### System structure
 
-See
-[specification](https://docs.google.com/document/d/1RIQWpiXRuxUmI_VhMZjo-UgxMxjEIXIpC2tmMY_ZpuE/edit)
-for the requirements.
+After the third laboratory assignment groups will switch projects with one another. Because of this,
+all projects have to have the same high-level structure. Also, this is the reason why you should not
+modify project dependencies.
 
-#### Main scenario endpoints
+Please remember that the main goal of the course is **testing** and everything else is just an 
+implementation harness.
 
-1. Sign up
-
-```shell
-curl --request POST \
-  --url http://localhost:8080/users/signup \
-  --header 'content-type: application/json' \
-  --data '{
-  "email": "aaa@example.com",
-  "password": "passw000rd"
-}' -v
-```
-
-2. Login
-
-```shell
-curl --request POST \
-  --url http://localhost:8080/login \
-  --header 'content-type: application/json' \
-  --data '{
-  "username": "aaa@example.com",
-  "password": "passw000rd"
-}' -v
-```
-
-3. Shorten URL
-
-```shell
-curl --request POST \
-  --url http://localhost:8080/urls/shorten \
-  --header 'authorization: Bearer <TOKEN FROM THE LOGIN RESPONSE>' \
-  --header 'content-type: application/json' \
-  --data '{
-  "url": "https://github.com/future-stardust/url-shrtnr-palevo",
-  "alias": "palevo"
-}' -v
-```
-
-4. Redirect
-
-```shell
-curl --request GET --url http://localhost:8080/r/palevo -v
-```
+There are four modules:
+- `auth` **authentication module** - creates new users, authenticates existing ones
+- `bigtable` - **big table** - a key-value persistence storage (please, pay attention that you should implement it by
+  yourself. It means that it is not allowed to use data bases, another key-value storages 
+  implementation, etc)
+- `logic` - **business logic** - logic of URL shortening
+- `rest` - **REST API** - a module that provides a REST API. [Micronaut] framework is already added
+  to project dependencies. It simplifies creation of REST API and provides built-in JWT 
+  authentication.
 
 ## Environment prerequisites
 
