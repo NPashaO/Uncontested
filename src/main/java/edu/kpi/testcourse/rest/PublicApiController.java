@@ -1,3 +1,6 @@
+/**
+ * Реєстраційний реквест
+ */
 package edu.kpi.testcourse.rest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
