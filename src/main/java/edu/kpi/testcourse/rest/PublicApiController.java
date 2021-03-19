@@ -1,6 +1,3 @@
-/**
- * Реєстраційний реквест
- */
 package edu.kpi.testcourse.rest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -19,6 +16,10 @@ import io.micronaut.security.rules.SecurityRule;
 import java.net.URI;
 import javax.inject.Inject;
 
+ /**
+ * import java.util.Arrays;
+ *import java.util.List;
+ */
 /**
  * API controller for all REST API endpoints accessible without authentication.
  */
@@ -66,4 +67,17 @@ public class PublicApiController {
       return HttpResponse.notFound();
     }
   }
+/**
+  @Get(value = "/urls")
+  public HttpResponse<?> urlslist(String alias) {
+    List<UrlAlias> urlsList = logic.urlListFull(urls);
+    if(urlsList != null){
+      return HttpResponse.status(HttpStatus.OK);
+    } else {
+      return HttpResponse.notFound();
+    }
+
+  }
+ */
+
 }
